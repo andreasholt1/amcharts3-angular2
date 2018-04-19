@@ -371,6 +371,13 @@ export class AmChartsService {
     AmCharts.shortMonthNames = v;
   }
 
+  get translations() {
+    return AmCharts.translations;
+  }
+
+  set translations(translations: any) {
+    AmCharts.translations = translations;
+  }
 
   // TODO better type for this
   get theme(): any {
@@ -433,12 +440,13 @@ export class AmChartsService {
   }
 
 
-  // TODO is Node the correct type ?
-  // TODO better type for config
-  makeChart(id: string | Node, config: any, delay?: number): AmChart {
-    return this.zone.runOutsideAngular(() => AmCharts.makeChart(id, config, delay));
-  }
-
+    // TODO is Node the correct type ?
+    // TODO better type for config
+    makeChart(id: string | Node, config: any, delay?: number): AmChart {
+        console.log(AmCharts.translations);
+        AmCharts.translations['export']['da']['menu.label.save.image'] = 'Download på dansk';
+        return this.zone.runOutsideAngular(() => AmCharts.makeChart(id, config, delay));
+    }
 
   addListener(chart: AmChart, type: string, fn: (event: AmEvent) => void): () => void {
     const callback = (e: AmEvent) => {

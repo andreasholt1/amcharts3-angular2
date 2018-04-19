@@ -32,6 +32,7 @@ export declare class AmChartsService {
     monthNames: Array<string>;
     shortDayNames: Array<string>;
     shortMonthNames: Array<string>;
+    translations: any;
     theme: any;
     processDelay: number;
     readonly charts: Array<AmChart>;
